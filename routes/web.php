@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin'], function() {
-	//LOGIN OU MENU
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth'], function() {
+	
+    //LOGIN OU MENU
     Route::get('/', 'Admin@index')->name('index');
+
     //PROFESSORES
     Route::group(['prefix' => 'professor', 'as' => 'professor'], function() {
         //LISTA DE PROFESSORES
