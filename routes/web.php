@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 	
     //LOGIN OU MENU
     Route::get('/', 'Admin@index')->name('index');
+    Route::post('login', 'Admin@login')->name('login');
 
     //PROFESSORES
     Route::group(['prefix' => 'professor', 'as' => 'professor'], function() {

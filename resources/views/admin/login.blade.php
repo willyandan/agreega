@@ -14,7 +14,8 @@
 						<h4>Coordenador - Login</h4>
 					</div>
 					<div class="panel-body">
-						<form action="login_submit" method="POST" accept-charset="utf-8" class="form-horizontal">
+						<form method="POST" accept-charset="utf-8" class="form-horizontal" id="formLogin">
+							<input type="hidden" name="_token" id="token" value="{!!csrf_token()!!}">
 							<div class="form-group">
 								<label for="escola" class="col-xs-12">Escola</label>
 								<div class="col-xs-12">
@@ -67,3 +68,6 @@
 	</div>
 </section>
 @endsection
+@push('script')
+<script src="{{asset('js/admLogin.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+@endpush

@@ -19,6 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('state', 50);
             $table->string('city', 90);
             $table->string('neighborhood', 90);
+            $table->string('street', 250);
             $table->string('number', 20);
             $table->timestamps();
         });
