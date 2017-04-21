@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User as USER;
+use App\User as USER; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,6 +25,7 @@ class Admin extends Controller
             echo json_encode($retorno);
             return;
         }
+        
         $retorno['status'] = 'OK';
     	echo json_encode($retorno);
     }
