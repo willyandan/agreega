@@ -16,10 +16,10 @@ class CreateMattersTable extends Migration
         Schema::create('matters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('matter', 100);
-            $table->integer('id_teacher')->unsigned();
+            $table->bigInteger('id_person')->unsigned();
             $table->integer('id_school')->unsigned();
             //chave estrangeria
-            $table->foreign('id_teacher')->references('id')->on('teachers');
+            $table->foreign('id_person')->references('id')->on('people');
             $table->foreign('id_school')->references('id')->on('schools');
             
         });

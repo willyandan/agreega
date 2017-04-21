@@ -20,11 +20,13 @@ class CreatePeopleTable extends Migration
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_address')->unsigned();
             $table->integer('id_type')->unsigned();
+            $table->integer('id_school')->unsigned();
             $table->timestamps();
             //Forein Keys
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_address')->references('id')->on('addresses');
             $table->foreign('id_type')->references('id')->on('types');
+            $table->foreign('id_school')->references('id')->on('schools');
 
         });
     }
