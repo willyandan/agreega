@@ -20,7 +20,7 @@ class AdminAuth
         //VERIFICAR SE EXISTA COORDENADOR E ESCOLA
         $name = Route::currentRouteName();
         if($name != "admin.index" && $name != "admin.login"){
-            if(!$request->session()->has('admin') || !$request->session()->has('escola')){
+            if(!$request->session()->has('admin')){
                 return redirect()->route('admin.index');   
             }
         }

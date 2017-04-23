@@ -12,7 +12,7 @@ function loga($TOKEN, $ESCOLA, $LOGIN, $SENHA){
 	var data_form ={
 		escola : $ESCOLA,
 		login : $LOGIN,
-		senha: $SENHA,
+		password: $SENHA,
 		_token: $TOKEN
 	}
 	$.ajax({

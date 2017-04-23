@@ -17,6 +17,7 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->boolean('active')->default(0);
             $table->bigInteger('id_address')->unsigned();
             $table->timestamps();
             //foreign key
