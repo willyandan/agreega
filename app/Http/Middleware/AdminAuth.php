@@ -21,7 +21,7 @@ class AdminAuth
         $name = Route::currentRouteName();
         if($name != "admin.index" && $name != "admin.login"){
             if(!$request->session()->has('admin')){
-                return redirect()->route('admin.index');   
+                return redirect()->route('admin.index')->with('error', 'Erro de sessão entre novamente');   
             }
         }
         return $next($request);

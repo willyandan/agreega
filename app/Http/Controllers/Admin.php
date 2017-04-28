@@ -53,4 +53,9 @@ class Admin extends Controller
         $retorno['status'] = 'OK';
     	echo json_encode($retorno);
     }
+
+    public function logout(Request $request){
+        $request->session()->forget('admin');
+        return redirect()->route('admin.index');
+    }
 }

@@ -1,9 +1,15 @@
 @extends('templates.admin')
 
 @section('title', 'Administração - Login')
+
 @push('link')
 	<link rel="stylesheet" href="{{asset('css/admLogin.css')}}">
 @endpush
+
+@push('script')
+	<script src="{{asset('js/admLogin.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+@endpush
+
 @section('content')
 <section class="content">
 	<div class="container">
@@ -14,26 +20,24 @@
 						<h4>Coordenador - Login</h4>
 					</div>
 					<div class="panel-body">
-						<form method="POST" accept-charset="utf-8" class="form-horizontal" id="formLogin">
-							<input type="hidden" name="_token" id="token" value="{!!csrf_token()!!}">
-							<div class="form-group">
-								<label for="escola" class="col-xs-12">Escola</label>
-								<div class="col-xs-12">
-									<div class="iconInput">
-										<i class="fa fa-fw fa-graduation-cap"></i>
-										<input type="text" class="form-control input-agreega" id="escola" placeholder="Escola" required>
-									</div>
+						
+						<div class="alert-group">
+							@if(session('error'))
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<strong>Atenção:</strong> {{session('error')}}
 								</div>
-							</div>
+							@endif	
+						</div>
 
-							<hr>
-
+						<form accept-charset="utf-8" class="form-horizontal" id="formLogin">
+							<input type="hidden" name="_token" id="token" value="{!!csrf_token()!!}">
 							<div class="form-group">
 								<label for="user" class="col-xs-12">Usuário</label>
 								<div class="col-xs-12">
 									<div class="iconInput">
 										<i class="fa fa-fw fa-user"></i>
-										<input type="text" class="form-control input-agreega" id="user" placeholder="Nome do usuário" required>
+										<input type="text" class="form-control input-agreega" id="user" name="login" placeholder="Nome do usuário" required>
 									</div>
 								</div>
 							</div>
@@ -45,7 +49,7 @@
 								<div class="col-xs-12">
 									<div class="iconInput">
 										<i class="fa fa-fw fa-lock"></i>
-										<input type="password" class="form-control input-agreega" id="password" placeholder="Senha" required>
+										<input type="password" class="form-control input-agreega" id="password" placeholder="Senha" required name="password">
 									</div>
 									<span class="help-block">
 										<a href="#" class="link-vermelho">Esqueceu a senha?</a>
@@ -56,7 +60,7 @@
 							<div class="form-group">
 								<div class="col-xs-12">
 									<div class="text-right">
-										<button type="submit" class="btn btn-vermelho">Entrar</button>
+										<button type="submit" id="btnEnviar" class="btn btn-vermelho">Entrar</button>
 									</div>
 								</div>
 							</div>
@@ -68,6 +72,3 @@
 	</div>
 </section>
 @endsection
-@push('script')
-<script src="{{asset('js/admLogin.js')}}" type="text/javascript" charset="utf-8" async defer></script>
-@endpush

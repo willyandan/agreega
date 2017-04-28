@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/admEstilo.css')}}">
 	@stack('link')
+	<script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+	@stack('script')
 </head>
 <body>
 	@include('templates.commom.admHeader')
@@ -19,10 +22,5 @@
 	@include('templates.commom.admFooter')
 	
 	@yield('modal')
-
-	<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript" charset="utf-8" async defer></script>
-	
-	@stack('script')
 </body>
 </html>

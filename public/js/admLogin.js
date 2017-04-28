@@ -1,35 +1,53 @@
 $(document).ready(function() {
-	$('#formLogin').on('submit', function(event) {
-		event.preventDefault();
-		var token = $('#token').val();
-		var escola = $('#escola').val();
+	$('#formLogin').submit(function(event){
+		$('#btnEnviar').prop('disabled', true);
 		var usuario = $('#user').val();
 		var senha = $('#password').val();
-		loga(token, escola, usuario, senha)
+		loga(usuario, senha)
+		event.preventDefault();
 	});
 });
-function loga($TOKEN, $ESCOLA, $LOGIN, $SENHA){
+function loga($LOGIN, $SENHA){
 	var data_form ={
-		escola : $ESCOLA,
-		login : $LOGIN,
-		password: $SENHA,
-		_token: $TOKEN
+		'login' : $LOGIN,
+		'password': $SENHA,
+		'_token': $('#token').val()
 	}
 	$.ajax({
 		url: '/admin/login',
 		type: 'POST',
 		dataType: 'json',
-		data: data_form
+		data: data_form,
 	})
 	.done(function(response) {
-		console.log(JSON.stringify(response))
-		console.log("success");
+		if(response['status'] == 'OK'){
+			window.location.href = "/admin";
+		}
+		else if(response['status'] == 'ERROR'){
+			$('.alert-group').html('');
+			var alerta = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Atenção:</strong> <span class=\"alert-msg\"></span></div>";
+			$('.alert-group').html(alerta);
+
+			if(response['error_cod'] == 1){
+				$('.alert-msg').html('Login ou senha incorreto');
+			}
+			if(response['error_cod'] == 2){
+				$('.alert-msg').html('Esse usuário não tem permissão para entrar aqui');
+			}
+			if(response['error_cod'] == 3){
+				$('.alert-msg').html('Contrato expirado, entre em contato conosco para renovar o contrato');
+			}
+		}else{
+			var alerta = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Atenção:</strong> Erro inesperado, tente novamente mais tarde</div>";
+			$('.alert-group').html(alerta);
+		}
 	})
 	.fail(function(response) {
-		$('body').html(JSON.stringify(response))
-		console.log("error");
+		var alerta = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Atenção:</strong> Erro de conexão</div>";
+		$('.alert-group').html(alerta);
 	})
 	.always(function() {
+		$('#btnEnviar').prop('disabled', false);
 		console.log("complete");
 	});
 	
