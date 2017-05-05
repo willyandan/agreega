@@ -8,7 +8,7 @@
 }
 .input-agreega:focus{
 	border-color: #ccc;
-	border-bottom: solid 3px #ad1d1d;
+	border-bottom: solid 3px #C91F37;
 	-webkit-box-shadow: inset 0 0px;
 	box-shadow: inset 0 0px;
 }
@@ -29,29 +29,46 @@
 }
 
 .btn-vermelho{
-	background-color: #ad1d1d;
+	background-color: #C91F37;
 	color: #fff;
-	border-color: #842515;
+	border-color: #8F1D21;
 }
 .btn-vermelho:hover, .btn-vermelho:focus{
-	background-color: #842515;
+	background-color: #8F1D21;
 	color: #fff;
 }
 a.link-vermelho{
-	color: #ad1d1d;
+	color: #C91F37;
 }
 a.link-vermelho:hover, a.link-vermelho:focus{
-	color: #842515;
+	color: #8F1D21;
 }
 /*CABECALHO
 =========================================================*/
 .navbar-default{
-	background-color: #ad1d1d;
+	background-color: #C91F37;
 }
 .navbar-default .navbar-brand,
 .navbar-default .navbar-brand:hover, 
 .navbar-default .navbar-brand:focus{
 	color: #fff;
+}
+.navbar-default .navbar-nav>li>a{
+	color: #fff;
+}
+.navbar-default .navbar-nav>li>a:focus, 
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover{
+	background-color: #D24D57;
+	color: #fff;
+}
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #fff;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+	background-color: #D24D57;
 }
 /*CORPO
 ==========================================================*/

@@ -10,7 +10,7 @@ class Admin extends Controller
 {
     public function index(Request $request){
         if($request->session()->has('admin')){
-            return view('admin.dashboard');  
+            return view('admin.dashboard')->with('admin', $request->session()->get('admin'));  
         }
     	return view('admin.login');
     }

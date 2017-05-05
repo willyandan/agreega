@@ -22,8 +22,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     Route::post('login', 'Admin@login')->name('login');
     Route::get('logout', 'Admin@logout')->name('logout');
     
+    //ESCOLA
+    Route::group(['prefix' => 'escola', 'as' => 'escola.'], function(){
+        Route::get('/', 'School@register')->name('register');
+    });
     //PROFESSORES
-    Route::group(['prefix' => 'professor', 'as' => 'professor'], function() {
+    Route::group(['prefix' => 'professor', 'as' => 'professor.'], function() {
         //LISTA DE PROFESSORES
         Route::get('/', function() {
 	        
@@ -52,7 +56,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     });
 
     //ALUNOS
-    Route::group(['prefix' => 'aluno', 'as' => 'aluno'], function() {
+    Route::group(['prefix' => 'aluno', 'as' => 'aluno.'], function() {
         //LISTA DE ALUNOS
     	Route::get('/', function() {
     	    
@@ -80,37 +84,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
         });
     });
 
-    //MATERIAS
-    Route::group(['prefix' => 'materia', 'as' => 'materia'], function() {
-        //LISTA DE MATERIA
-    	Route::get('/', function() {
-    	    
-    	});
-
-        //CADASTRAR MATERIA
-    	Route::get('cadastrar', function() {
-    	    //
-    	});
-    	Route::post('salvar', function() {
-    	    //
-    	});
-
-        //EDITAR MATERIA
-    	Route::get('editar/{id}', function() {
-    	    //
-    	});
-    	Route::post('atualizar', function() {
-    	    //
-    	});
-    	
-        //DELETAR MATERIA
-        Route::delete('deletar', function() {
-            //
-        });
-    });
-
     //CLASSES
-    Route::group(['prefix' => 'classe', 'as' => 'classe'], function() {
+    Route::group(['prefix' => 'classe', 'as' => 'classe.'], function() {
         //LISTA DE CLASSE
     	Route::get('/', function() {
     	    
@@ -133,35 +108,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     	});
     	
         //DELETAR CLASSE
-        Route::delete('deletar', function() {
-            //
-        });
-    });
-
-    //HORARIOS
-    Route::group(['prefix' => 'horario', 'as' => 'horario'], function() {
-        //LISTA DE HORARIO
-    	Route::get('/', function() {
-    	    
-    	});
-
-        //CADASTRAR HORARIO
-    	Route::get('cadastrar', function() {
-    	    //
-    	});
-    	Route::post('salvar', function() {
-    	    //
-    	});
-
-        //EDITAR HORARIO
-    	Route::get('editar/{id}', function() {
-    	    //
-    	});
-    	Route::post('atualizar', function() {
-    	    //
-    	});
-    	
-        //DELETAR HORARIO
         Route::delete('deletar', function() {
             //
         });
