@@ -18,5 +18,12 @@ class PeopleTableSeeder extends Seeder
         	'id_type' => 3,
         	'id_school' => 1
         ]);
+        DB::table('people')->insert([
+            'name' => 'Marcelo Cauã Freitas',
+            'id_user' => 2,
+            'id_address' => 3,
+            'id_type' => 2,
+            'id_school' => 1
+        ]);
     }
 }

@@ -113,3 +113,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
         });
     });
 });
+
+Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function(){
+    Route::post('cities', 'City@getCities')->name('cities');
+    Route::get('states', 'City@getStates')->name('states');
+    Route::post('teachers', 'Teacher@getTeachers')->name('teacher');
+});
