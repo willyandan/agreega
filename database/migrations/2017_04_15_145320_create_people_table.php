@@ -17,6 +17,7 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
+            $table->string('birthday');
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_address')->unsigned();
             $table->integer('id_type')->unsigned();

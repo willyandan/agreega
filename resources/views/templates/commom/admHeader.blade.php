@@ -16,7 +16,7 @@
 	    <div class="collapse navbar-collapse" id="collapse-navbar">
 	    	<ul class="nav navbar-nav">
 				<li><a href="{{route("admin.escola.register")}}">Escola</a></li>
-				<li><a href="#">Alunos</a></li>
+				<li><a href="{{route('admin.aluno.index')}}">Alunos</a></li>
 				<li><a href="#">Professores</a></li>
 				<li><a href="#">Classes</a></li>
 				<li><a href="#">Estatistica</a></li>

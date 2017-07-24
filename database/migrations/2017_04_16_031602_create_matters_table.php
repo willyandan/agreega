@@ -18,6 +18,7 @@ class CreateMattersTable extends Migration
             $table->string('matter', 100);
             $table->bigInteger('id_person')->unsigned();
             $table->integer('id_school')->unsigned();
+            $table->timestamps();
             //chave estrangeria
             $table->foreign('id_person')->references('id')->on('people');
             $table->foreign('id_school')->references('id')->on('schools');

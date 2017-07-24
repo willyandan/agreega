@@ -22,7 +22,7 @@
 				</a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="link-box link-box-green">
+				<a href="{{route('admin.aluno.index')}}" class="link-box link-box-green">
 					<span class="link-box-text">
 						Alunos
 					</span>

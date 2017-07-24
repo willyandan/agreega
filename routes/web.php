@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     //ESCOLA
     Route::group(['prefix' => 'escola', 'as' => 'escola.'], function(){
         Route::get('/', 'School@register')->name('register');
+        Route::post('atualizar', 'School@update')->name('update');
     });
     //PROFESSORES
     Route::group(['prefix' => 'professor', 'as' => 'professor.'], function() {
@@ -58,30 +59,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     //ALUNOS
     Route::group(['prefix' => 'aluno', 'as' => 'aluno.'], function() {
         //LISTA DE ALUNOS
-    	Route::get('/', function() {
-    	    
-    	});
-
+    	Route::get('/','Student@index')->name('index');
+        Route::get('view/{id}','Student@view')->name('view');
         //CADASTRAR ALUNO
-    	Route::get('cadastrar', function() {
-    	    //
-    	});
-    	Route::post('salvar', function() {
-    	    //
-    	});
+    	Route::get('cadastrar','Student@create')->name('create');
+    	Route::post('salvar','Student@save')->name('save');
 
         //EDITAR ALUNO
-    	Route::get('editar/{id}', function() {
-    	    //
-    	});
-    	Route::post('atualizar', function() {
-    	    //
-    	});
+    	Route::get('editar/{id}','Student@edit')->name('edit');
+    	Route::post('atualizar','Student@update')->name('update');
 
         //DELETAR ALUNO
-        Route::delete('deletar', function() {
-            //
-        });
+        Route::delete('deletar','Student@delete')->name('delete');
     });
 
     //CLASSES
@@ -118,4 +107,7 @@ Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function(){
     Route::post('cities', 'City@getCities')->name('cities');
     Route::get('states', 'City@getStates')->name('states');
     Route::post('teachers', 'Teacher@getTeachers')->name('teacher');
+    Route::post('verificaEmail', 'Person@verifyEmail')->name('verifyEmail');
+    Route::post('verificaLogin', 'Person@verifyLogin')->name('verifyLogin');
+    Route::post('verificaRa', 'Person@verifyRa')->name('verifyRa');
 });
